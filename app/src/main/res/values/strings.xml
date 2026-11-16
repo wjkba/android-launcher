@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minimal</string>
+
+    <string name="home_empty_hint">Swipe up to see all apps. Long-press an app to add it here.</string>
+    <string name="open_drawer">All apps</string>
+    <string name="close_drawer">Close app list</string>
+    <string name="favorite_marker">On home screen</string>
+    <string name="alphabet_index">Alphabet index. Drag to jump to a letter.</string>
+
+    <string name="pause_opening">Opening %1$s</string>
+    <string name="pause_inhale">Breathe in</string>
+    <string name="pause_exhale">Breathe out</string>
+    <string name="pause_attempts_today">Attempts to open today: %1$d</string>
+    <string name="pause_cancel">Not now</string>
+    <string name="pause_open">Open %1$s</string>
+
+    <string name="action_add_favorite">Add to home screen</string>
+    <string name="action_remove_favorite">Remove from home screen</string>
+    <string name="action_move_up">Move up</string>
+    <string name="action_move_down">Move down</string>
+    <string name="action_app_info">App info</string>
+
+    <string name="action_add_to_folder">Add to folder…</string>
+    <string name="action_move_to_folder">Move to folder…</string>
+    <string name="action_take_out_of_folder">Take out of %1$s</string>
+    <string name="action_choose_folder">Choose a folder</string>
+
+    <string name="folder_new_title">New folder</string>
+    <string name="folder_edit_title">Edit folder</string>
+    <string name="folder_name">Name</string>
+    <string name="folder_icon">Icon</string>
+    <string name="folder_apps">Apps (%1$d)</string>
+    <string name="folder_no_apps">No apps yet</string>
+    <string name="folder_choose_apps">Choose</string>
+    <string name="folder_in">In %1$s</string>
+    <string name="folder_save">Save</string>
+    <string name="folder_done">Done</string>
+    <string name="folder_back">Back</string>
+    <string name="folder_delete">Delete folder</string>
+    <string name="folder_delete_hint">Its apps stay on the home screen.</string>
+    <string name="folder_empty">This folder is empty. Tap the pencil to add apps.</string>
+    <plurals name="folder_description">
+        <item quantity="one">Folder %1$s, %2$d app</item>
+        <item quantity="other">Folder %1$s, %2$d apps</item>
+    </plurals>
+</resources>

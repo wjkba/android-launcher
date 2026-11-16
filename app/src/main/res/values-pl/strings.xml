@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="home_empty_hint">Przesuń w górę, aby zobaczyć wszystkie aplikacje. Przytrzymaj aplikację, aby dodać ją tutaj.</string>
+    <string name="open_drawer">Wszystkie aplikacje</string>
+    <string name="close_drawer">Zamknij listę aplikacji</string>
+    <string name="favorite_marker">Na ekranie głównym</string>
+    <string name="alphabet_index">Indeks alfabetyczny. Przeciągnij, aby przejść do litery.</string>
+
+    <string name="pause_opening">Otwierasz %1$s</string>
+    <string name="pause_inhale">Wdech</string>
+    <string name="pause_exhale">Wydech</string>
+    <string name="pause_attempts_today">Próby otwarcia dzisiaj: %1$d</string>
+    <string name="pause_cancel">Nie teraz</string>
+    <string name="pause_open">Otwórz %1$s</string>
+
+    <string name="action_add_favorite">Dodaj do ekranu głównego</string>
+    <string name="action_remove_favorite">Usuń z ekranu głównego</string>
+    <string name="action_move_up">Przesuń wyżej</string>
+    <string name="action_move_down">Przesuń niżej</string>
+    <string name="action_app_info">Informacje o aplikacji</string>
+
+    <string name="action_add_to_folder">Dodaj do folderu…</string>
+    <string name="action_move_to_folder">Przenieś do folderu…</string>
+    <string name="action_take_out_of_folder">Wyjmij z: %1$s</string>
+    <string name="action_choose_folder">Wybierz folder</string>
+
+    <string name="folder_new_title">Nowy folder</string>
+    <string name="folder_edit_title">Edytuj folder</string>
+    <string name="folder_name">Nazwa</string>
+    <string name="folder_icon">Ikona</string>
+    <string name="folder_apps">Aplikacje (%1$d)</string>
+    <string name="folder_no_apps">Brak aplikacji</string>
+    <string name="folder_choose_apps">Wybierz</string>
+    <string name="folder_in">W: %1$s</string>
+    <string name="folder_save">Zapisz</string>
+    <string name="folder_done">Gotowe</string>
+    <string name="folder_back">Wstecz</string>
+    <string name="folder_delete">Usuń folder</string>
+    <string name="folder_delete_hint">Jego aplikacje zostaną na ekranie głównym.</string>
+    <string name="folder_empty">Folder jest pusty. Stuknij ołówek, aby dodać aplikacje.</string>
+    <plurals name="folder_description">
+        <item quantity="one">Folder %1$s, %2$d aplikacja</item>
+        <item quantity="few">Folder %1$s, %2$d aplikacje</item>
+        <item quantity="many">Folder %1$s, %2$d aplikacji</item>
+        <item quantity="other">Folder %1$s, %2$d aplikacji</item>
+    </plurals>
+</resources>
