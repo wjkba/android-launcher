@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Pulling down on home opens the notification shade. Granted at install, no prompt. -->
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
     <!-- Lets the launcher see every app that has a launcher icon,
          without the broad QUERY_ALL_PACKAGES permission. -->
     <queries>

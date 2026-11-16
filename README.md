@@ -4,6 +4,7 @@ Tekstowy launcher Androida pod Unihertz Jelly Star (3", Android 13).
 
 - **Ekran główny**: zegar (stuknięcie otwiera budziki), data (otwiera kalendarz), ulubione aplikacje i foldery pod nimi. Lista zaczyna się mniej więcej w połowie ekranu, więc pierwsze pozycje są pod kciukiem i widać je od razu. Dłuższa lista przewija się w górę, a wygaszona dolna krawędź pokazuje, że niżej jest coś jeszcze. Po wyjściu z launchera lista wraca na początek.
 - **Przesunięcie w górę** na końcu listy ulubionych (albo stuknięcie w kreskę na dole) otwiera alfabetyczną listę wszystkich aplikacji. Lista zamyka się, gdy przeciągniesz ją w dół przy samej górze, albo przyciskiem Wstecz lub Home.
+- **Mocniejsze pociągnięcie w dół** na ekranie głównym otwiera panel powiadomień. Lekkie muśnięcie nic nie robi, a jeśli lista była przewinięta, ruch w dół najpierw ją przewija z powrotem.
 - **Przewijanie po literach**: przesuwasz kciukiem wzdłuż paska liter przy prawej krawędzi, a lista skacze do wybranej litery. Na środku ekranu pojawia się wtedy duża litera, a telefon delikatnie wibruje przy każdej zmianie.
 - **Ulubione otwierają się od razu.** Każda inna aplikacja otwiera się dopiero po pauzie na jeden oddech (4 s wdechu i 4 s wydechu). Potem widać licznik dzisiejszych prób otwarcia i dwa przyciski: „Nie teraz” albo „Otwórz”.
 - **Foldery** na ekranie głównym: wiersz z monochromatyczną ikoną i nazwą. Stuknięcie otwiera panel od dołu z aplikacjami folderu, które otwierają się od razu, bez pauzy. Ołówek w panelu otwiera edytor: nazwa, aplikacje i jedna z 48 ikon.

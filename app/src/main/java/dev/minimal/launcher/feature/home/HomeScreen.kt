@@ -1,5 +1,6 @@
 package dev.minimal.launcher.feature.home
 
+import android.app.StatusBarManager
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -81,6 +82,7 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     now: () -> LocalDateTime = { LocalDateTime.now() },
 ) {
+    val context = LocalContext.current
     val scrollState = rememberScrollState()
     val scope = rememberCoroutineScope()
     // Leaving the launcher scrolls back up, so home always opens on the first (most used) rows.
@@ -92,7 +94,9 @@ fun HomeScreen(
                 .weight(1f)
                 .fillMaxWidth()
                 .fadeBottomEdge(visible = scrollState.canScrollForward)
-                .nestedScroll(rememberDrawerPull(onOpenDrawer)),
+                .nestedScroll(
+                    rememberEdgePulls(onPullUp = onOpenDrawer, onPullDown = { context.expandNotifications() }),
+                ),
         ) {
             val viewportHeight = maxHeight
             // The clock starts a bit below the top, so the first rows land in the thumb's reach and the
@@ -165,30 +169,38 @@ private fun Modifier.fadeBottomEdge(visible: Boolean): Modifier = if (!visible) 
 }
 
 /**
- * Dragging up opens the app drawer, but only a drag that did not scroll the list: at its end, or on a list
- * too short to scroll. A fast swipe down to the last rows therefore never overshoots into the drawer.
+ * A drag that did not scroll the list (at its end or start, or on a list too short to scroll) acts on lift:
+ * up opens the app drawer, a longer pull down opens the notification shade. A fast swipe to the last or
+ * first rows therefore never overshoots into either.
  */
 @Composable
-private fun rememberDrawerPull(onOpenDrawer: () -> Unit): NestedScrollConnection {
-    val thresholdPx = with(LocalDensity.current) { 56.dp.toPx() }
-    val openDrawer by rememberUpdatedState(onOpenDrawer)
-    return remember(thresholdPx) {
+private fun rememberEdgePulls(onPullUp: () -> Unit, onPullDown: () -> Unit): NestedScrollConnection {
+    val density = LocalDensity.current
+    val upThresholdPx = with(density) { 56.dp.toPx() }
+    val downThresholdPx = with(density) { 80.dp.toPx() }
+    val pullUp by rememberUpdatedState(onPullUp)
+    val pullDown by rememberUpdatedState(onPullDown)
+    return remember(upThresholdPx, downThresholdPx) {
         object : NestedScrollConnection {
-            var pulledUp = 0f
+            // Finger travel the list did not use, in px: negative = up.
+            var pulled = 0f
             var scrolled = false
 
             override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset {
                 if (source == NestedScrollSource.UserInput) {
                     if (consumed.y != 0f) scrolled = true
-                    pulledUp -= available.y
+                    pulled += available.y
                 }
                 return Offset.Zero
             }
 
             // Called once when the finger lifts, also for a slow drag.
             override suspend fun onPreFling(available: Velocity): Velocity {
-                if (!scrolled && pulledUp > thresholdPx) openDrawer()
-                pulledUp = 0f
+                if (!scrolled) {
+                    if (pulled < -upThresholdPx) pullUp()
+                    if (pulled > downThresholdPx) pullDown()
+                }
+                pulled = 0f
                 scrolled = false
                 return Velocity.Zero
             }
@@ -289,6 +301,16 @@ private fun calendarIntent(now: LocalDateTime): Intent {
     val millis = now.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
     val uri = CalendarContract.CONTENT_URI.buildUpon().appendPath("time").appendPath(millis.toString()).build()
     return Intent(Intent.ACTION_VIEW, uri)
+}
+
+/** Opens the notification shade. There is no public API, so launchers call this hidden one. */
+private fun Context.expandNotifications() {
+    val statusBar = getSystemService(StatusBarManager::class.java) ?: return
+    try {
+        statusBar.javaClass.getMethod("expandNotificationsPanel").invoke(statusBar)
+    } catch (_: ReflectiveOperationException) {
+        // Blocked on this Android version; the pull just does nothing.
+    }
 }
 
 private fun Context.startSafely(intent: Intent) {
